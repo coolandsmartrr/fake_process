@@ -30,14 +30,14 @@ def getHeight():
     curses.endwin()
     return height
 
-def setConsoleView():
+def set_consoleview():
   height = 60
   width = 80
   command = f"printf '\\e[8;{height};{width}t'"
 
   subprocess.call(command, shell=True)
 
-def showProgressbar(linenum, fillup_lines):
+def show_progressbar(linenum, fillup_lines):
   total_iterations = random.randint(70, 100)
   with tqdm(total=total_iterations, unit="epochs", leave=True) as pbar:
     if linenum < fillup_lines:
@@ -53,7 +53,7 @@ def showProgressbar(linenum, fillup_lines):
 
 
 def main(fillup_lines=getHeight(), isConsoleView=False):
-  if (isConsoleView): setConsoleView()
+  if (isConsoleView): set_consoleview()
   
   linenum = 0
   
@@ -65,7 +65,7 @@ def main(fillup_lines=getHeight(), isConsoleView=False):
     date = now.strftime("%Y-%m-%d")
     curr_time = now.strftime("%H:%M:%S")
     timestring = f"[{date} {curr_time} {logline}]"
-    showProgressbar(linenum, fillup_lines) if (logline == "progressbar") else print(timestring)
+    show_progressbar(linenum, fillup_lines) if (logline == "progressbar") else print(timestring)
 
     if (linenum > fillup_lines):
       interval = round(random.random() * 10)
