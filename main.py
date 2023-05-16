@@ -2,8 +2,7 @@ import time
 from datetime import datetime
 import random
 
-loglines = """
-Process started.
+loglines = """Process started.
 Initializing batch process...
 Loading data from source files...
 Data loaded successfully.
@@ -20,8 +19,7 @@ Batch process finalized.
 Cleaning up temporary files...
 Temporary files cleaned up successfully.
 Preparing for next iteration...
-Next iteration prepared.
-""".split('\n')
+Next iteration prepared.""".split('\n')
 
 i = 1
 
