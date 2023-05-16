@@ -1,8 +1,8 @@
 import time
 from datetime import datetime
 import random
-from rich import print
 import argparse
+from rich import print
 
 loglines = """Process started.
 Initializing batch process...
@@ -43,7 +43,7 @@ def main(fillup_lines=50):
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
-  parser.add_argument("-sl", "--startlines", type=int, default="50", help="Number of lines for initial console output")
+  parser.add_argument("-sl", "--startlines", type=int, default=50, help="Number of lines for initial console output")
   args = parser.parse_args()
 
   main(args.startlines)
