@@ -1,6 +1,7 @@
 import time, random, argparse, subprocess
 from datetime import datetime
 from rich import print
+from tqdm import tqdm
 
 loglines = """Process started.
 Initializing batch process...
@@ -9,6 +10,7 @@ Data loaded successfully.
 Applying transformations to the data...
 Transformations applied successfully.
 Performing data validation...
+progressbar
 Data validation completed. No errors found.
 Starting batch processing...
 Process completed.
@@ -29,6 +31,17 @@ def setConsoleView():
 
   subprocess.call(command, shell=True)
 
+def showProgressbar():
+  total_iterations = random.randint(70, 100)
+  with tqdm(total=total_iterations, unit="epochs", leave=True) as pbar:
+    while pbar.n < pbar.total:
+      time.sleep(random.randrange(0,2))
+      pbar.update(random.randint(0,5))
+      # Check if progress reaches 100%
+      if pbar.n >= 100:
+            break
+
+
 def main(fillup_lines=50, isConsoleView=False):
   if (isConsoleView): setConsoleView()
   
@@ -42,7 +55,7 @@ def main(fillup_lines=50, isConsoleView=False):
     date = now.strftime("%Y-%m-%d")
     curr_time = now.strftime("%H:%M:%S")
     timestring = f"[{date} {curr_time} {logline}]"
-    print(timestring)
+    showProgressbar() if (logline == "progressbar") else print(timestring)
 
     if (linenum > fillup_lines):
       interval = round(random.random() * 10)
