@@ -21,7 +21,7 @@ Temporary files cleaned up successfully.
 Preparing for next iteration...
 Next iteration prepared.""".split('\n')
 
-i = 1
+i = 0
 
 while True:
     # print(f"i: {i}")
