@@ -31,9 +31,11 @@ def setConsoleView():
 
   subprocess.call(command, shell=True)
 
-def showProgressbar():
+def showProgressbar(linenum, fillup_lines):
   total_iterations = random.randint(70, 100)
   with tqdm(total=total_iterations, unit="epochs", leave=True) as pbar:
+    if linenum < fillup_lines:
+      pbar.update(total_iterations)
     while pbar.n < pbar.total:
       time.sleep(random.randrange(0,2))
       pbar.update(random.randint(0,5))
@@ -57,7 +59,7 @@ def main(fillup_lines=50, isConsoleView=False):
     date = now.strftime("%Y-%m-%d")
     curr_time = now.strftime("%H:%M:%S")
     timestring = f"[{date} {curr_time} {logline}]"
-    showProgressbar() if (logline == "progressbar") else print(timestring)
+    showProgressbar(linenum, fillup_lines) if (logline == "progressbar") else print(timestring)
 
     if (linenum > fillup_lines):
       interval = round(random.random() * 10)
