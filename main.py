@@ -1,7 +1,5 @@
-import time
+import time, random, argparse
 from datetime import datetime
-import random
-import argparse
 from rich import print
 
 loglines = """Process started.
