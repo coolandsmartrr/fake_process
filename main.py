@@ -24,13 +24,12 @@ Next iteration prepared.""".split('\n')
 i = 0
 
 while True:
-    # print(f"i: {i}")
     logline = loglines[i % len(loglines)]
     i += 1
 
     now = datetime.now()
-    date = datetime.now().strftime("%Y-%m-%d")
-    curr_time = datetime.now().strftime("%H:%M:%S")
+    date = now.strftime("%Y-%m-%d")
+    curr_time = now.strftime("%H:%M:%S")
     timestring = f"[{date} {curr_time} {logline}]"
     print(timestring)
     interval = round(random.random() * 10)
