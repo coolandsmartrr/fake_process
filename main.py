@@ -35,7 +35,10 @@ def set_consoleview():
   width = 80
   command = f"printf '\\e[8;{height};{width}t'"
 
-  subprocess.call(command, shell=True)
+  try:
+      subprocess.call(command, shell=True)
+  except Exception as e:
+      print(f"An error occurred: {str(e)}")
 
 def show_progressbar(linenum, fillup_lines):
   total_iterations = random.randint(70, 100)
