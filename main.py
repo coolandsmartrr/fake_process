@@ -21,16 +21,19 @@ Temporary files cleaned up successfully.
 Preparing for next iteration...
 Next iteration prepared.""".split('\n')
 
-i = 0
+linenum = 0
+fillup_lines = 50
 
 while True:
-    logline = loglines[i % len(loglines)]
-    i += 1
+  logline = loglines[linenum % len(loglines)]
+  linenum += 1
 
-    now = datetime.now()
-    date = now.strftime("%Y-%m-%d")
-    curr_time = now.strftime("%H:%M:%S")
-    timestring = f"[{date} {curr_time} {logline}]"
-    print(timestring)
+  now = datetime.now()
+  date = now.strftime("%Y-%m-%d")
+  curr_time = now.strftime("%H:%M:%S")
+  timestring = f"[{date} {curr_time} {logline}]"
+  print(timestring)
+
+  if (linenum > fillup_lines):
     interval = round(random.random() * 10)
     time.sleep(interval)
