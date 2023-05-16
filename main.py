@@ -38,8 +38,10 @@ def showProgressbar():
       time.sleep(random.randrange(0,2))
       pbar.update(random.randint(0,5))
       # Check if progress reaches 100%
-      if pbar.n >= 100:
-            break
+      if pbar.n >= total_iterations:
+        pbar.n = total_iterations  # Set progress to total value
+        pbar.refresh() 
+        break
 
 
 def main(fillup_lines=50, isConsoleView=False):
