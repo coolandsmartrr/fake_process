@@ -1,6 +1,7 @@
 import time
 from datetime import datetime
 import random
+from rich import print
 
 loglines = """Process started.
 Initializing batch process...
