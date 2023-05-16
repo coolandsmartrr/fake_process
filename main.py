@@ -1,4 +1,4 @@
-import time, random, argparse
+import time, random, argparse, subprocess
 from datetime import datetime
 from rich import print
 
@@ -22,7 +22,16 @@ Preparing for next iteration...
 Next iteration prepared.""".split('\n')
 
 
-def main(fillup_lines=50):
+def setConsoleView():
+  height = 60
+  width = 80
+  command = f"printf '\\e[8;{height};{width}t'"
+
+  subprocess.call(command, shell=True)
+
+def main(fillup_lines=50, isConsoleView=False):
+  if (isConsoleView): setConsoleView()
+  
   linenum = 0
   
   while True:
@@ -42,6 +51,7 @@ def main(fillup_lines=50):
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
   parser.add_argument("-sl", "--startlines", type=int, default=50, help="Number of lines for initial console output")
+  parser.add_argument("-c", "--consoleview", action="store_true", default=False, help="Change the size of terminal window to 80x60")
   args = parser.parse_args()
 
-  main(args.startlines)
+  main(args.startlines, args.consoleview)
