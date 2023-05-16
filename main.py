@@ -2,6 +2,7 @@ import time, random, argparse, subprocess
 from datetime import datetime
 from rich import print
 from tqdm import tqdm
+import curses
 
 loglines = """Process started.
 Initializing batch process...
@@ -23,6 +24,11 @@ Temporary files cleaned up successfully.
 Preparing for next iteration...
 Next iteration prepared.""".split('\n')
 
+def getHeight():
+    stdscr = curses.initscr()
+    height, _ = stdscr.getmaxyx()
+    curses.endwin()
+    return height
 
 def setConsoleView():
   height = 60
@@ -46,7 +52,7 @@ def showProgressbar(linenum, fillup_lines):
         break
 
 
-def main(fillup_lines=50, isConsoleView=False):
+def main(fillup_lines=getHeight(), isConsoleView=False):
   if (isConsoleView): setConsoleView()
   
   linenum = 0
@@ -67,7 +73,7 @@ def main(fillup_lines=50, isConsoleView=False):
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
-  parser.add_argument("-sl", "--startlines", type=int, default=50, help="Number of lines for initial console output")
+  parser.add_argument("-sl", "--startlines", type=int, default=getHeight(), help="Number of lines for initial console output")
   parser.add_argument("-c", "--consoleview", action="store_true", default=False, help="Change the size of terminal window to 80x60")
   args = parser.parse_args()
 
