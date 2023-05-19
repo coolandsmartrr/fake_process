@@ -4,6 +4,7 @@ from rich import print
 from tqdm import tqdm
 import curses
 
+
 loglines = """Process started.
 Initializing batch process...
 Loading data from source files...
@@ -24,6 +25,7 @@ Temporary files cleaned up successfully.
 Preparing for next iteration...
 Next iteration prepared.""".split('\n')
 
+
 def getHeight():
     stdscr = curses.initscr()
     height, _ = stdscr.getmaxyx()
@@ -40,6 +42,7 @@ def set_consoleview():
   except Exception as e:
       print(f"An error occurred: {str(e)}")
 
+
 def show_progressbar(linenum, fillup_lines):
   total_iterations = random.randint(70, 100)
   with tqdm(total=total_iterations, unit="epochs", leave=True) as pbar:
@@ -55,7 +58,7 @@ def show_progressbar(linenum, fillup_lines):
         break
 
 
-def main(fillup_lines=getHeight(), isConsoleView=False):
+def main(fillup_lines, isConsoleView=False):
   if (isConsoleView): set_consoleview()
   
   linenum = 0
@@ -73,6 +76,7 @@ def main(fillup_lines=getHeight(), isConsoleView=False):
     if (linenum > fillup_lines):
       interval = round(random.random() * 10)
       time.sleep(interval)
+
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
