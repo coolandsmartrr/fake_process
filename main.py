@@ -26,7 +26,7 @@ Preparing for next iteration...
 Next iteration prepared.""".split('\n')
 
 
-def getHeight():
+def get_height():
     stdscr = curses.initscr()
     height, _ = stdscr.getmaxyx()
     curses.endwin()
@@ -80,7 +80,7 @@ def main(fillup_lines, isConsoleView=False):
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
-  parser.add_argument("-sl", "--startlines", type=int, default=getHeight(), help="Number of lines for initial console output")
+  parser.add_argument("-sl", "--startlines", type=int, default=get_height(), help="Number of lines for initial console output")
   parser.add_argument("-c", "--consoleview", action="store_true", default=False, help="Change the size of terminal window to 80x60")
   args = parser.parse_args()
 
