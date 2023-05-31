@@ -22,3 +22,21 @@ Example:
 [2023-05-16 18:52:32 Cleaning up temporary files...]
 [2023-05-16 18:52:32 Temporary files cleaned up successfully.]
 ```
+
+---
+
+## How to run
+
+```
+cd [this directory]
+
+python main.py
+
+(or, for full window height:)
+python main.py -c 
+```
+
+## Setup
+
+Install dependencies
+`pip install -r requirements.txt`
